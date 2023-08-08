@@ -7,6 +7,7 @@ const errors = require('../middleware/error_handler.middleware');
 const app = Express();
 
 // Rutas
+const clienteRoutes = require('./cliente-routes');
 
 // use=
 app.use('/ping', (req, res) => {
@@ -14,6 +15,7 @@ app.use('/ping', (req, res) => {
     response: 'pong!',
   });
 });
+app.use('/clientes', clienteRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
