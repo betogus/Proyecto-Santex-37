@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     cli_email: DataTypes.STRING,
     cli_celular: DataTypes.STRING,
     cli_empresa: DataTypes.STRING,
+    cli_password: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Cliente',

@@ -8,14 +8,13 @@ const app = Express();
 
 // Rutas
 const clienteRoutes = require('./cliente-routes');
+const categoriaRoutes = require('./categoria-routes');
+const serviciosyproductosRoutes = require('./serviciosyproductos-routes');
 
-// use=
-app.use('/ping', (req, res) => {
-  res.json({
-    response: 'pong!',
-  });
-});
+// use
 app.use('/clientes', clienteRoutes);
+app.use('/categorias', categoriaRoutes);
+app.use('/serviciosyproductos', serviciosyproductosRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
