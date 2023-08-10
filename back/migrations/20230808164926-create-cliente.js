@@ -23,6 +23,9 @@ module.exports = {
       },
       cli_empresa: {
         type: Sequelize.STRING(50),
+      },
+      cli_password: {
+        type: Sequelize.STRING(50)
       }
     });
   },
