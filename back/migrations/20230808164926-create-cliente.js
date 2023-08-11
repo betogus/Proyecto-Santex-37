@@ -14,9 +14,13 @@ module.exports = {
       },
       cli_nombre: {
         type: Sequelize.STRING(150),
+        allowNull: false
+
       },
       cli_email: {
         type: Sequelize.STRING(50),
+        allowNull: false
+
       },    
       cli_celular: {
         type: Sequelize.STRING(50),
@@ -25,7 +29,8 @@ module.exports = {
         type: Sequelize.STRING(50),
       },
       cli_password: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(50),
+        allowNull: false
       }
     });
   },

@@ -1,5 +1,6 @@
 const db = require('../models');
-
+const jwt = require('jsonwebtoken');
+const { NotFound } = require('../exceptions/cliente-exceptions');
 async function getAll() {
   try {
     const clientes = await db.Cliente.findAll();
@@ -9,7 +10,7 @@ async function getAll() {
   }
 }
 
-async function singUp(dni, personahumana, nombre, email, celular, empresa) {
+async function singUp(dni, personahumana, nombre, email, celular, empresa, password) {
   try {
     const cliente = new db.Cliente();
     cliente.cli_dni = dni;
@@ -18,6 +19,7 @@ async function singUp(dni, personahumana, nombre, email, celular, empresa) {
     cliente.cli_email = email;
     cliente.cli_celular = celular;
     cliente.cli_empresa = empresa;
+    cliente.cli_password = password
     const clienteCreated = await cliente.save();
     return clienteCreated;
   } catch (error) {
@@ -25,11 +27,27 @@ async function singUp(dni, personahumana, nombre, email, celular, empresa) {
   }
 }
 
+async function login (email, password) {
+  const cliente = await db.Cliente.findOne({
+    where: {
+      cli_email: email,
+      cli_password: password
+    }
+  })
+  if (!cliente) {
+    throw new NotFound ("Cliente no encontrado")
+  }
+  const token = jwt.sign({
+    dni: cliente.dataValues.cli_dni,
+  }, 'ClaveUltraSecreta')
+  return {accessToken: token}
+}
+
 async function getByDni(dni) {
   try {
     const cliente = await db.Cliente.findByPk(dni);
     if (!cliente) {
-      throw new Error('Cliente no encontrado');
+      throw new NotFound('Cliente no encontrado');
     }
     return cliente;
   } catch (error) {
@@ -37,7 +55,7 @@ async function getByDni(dni) {
   }
 }
 
-async function edit(dni, personahumana, nombre, email, celular, empresa) {
+async function edit(dni, personahumana, nombre, email, celular, empresa, password) {
   try {
     const cliente = await getByDni(dni);
     if (personahumana) cliente.cli_personahumana = personahumana;
@@ -45,6 +63,7 @@ async function edit(dni, personahumana, nombre, email, celular, empresa) {
     if (email) cliente.cli_email = email;
     if (celular) cliente.celular = celular;
     if (empresa) cliente.cli_empresa = empresa;
+    if (password) cliente.cli_password = password;
     const clienteEdited = await cliente.save();
     return clienteEdited;
   } catch (error) {
@@ -58,5 +77,5 @@ async function deleteCliente(dni) {
 }
 
 module.exports = {
-  getAll, singUp, getByDni, edit, deleteCliente,
+  getAll, singUp, getByDni, edit, deleteCliente, login
 };
