@@ -1,26 +1,3 @@
-/* Estilos para el contenedor principal */
-.login-container {
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  /* Estilos para el párrafo "Hola!" */
-  .login-container p {
-    font-size: 18px;
-    color: #333;
-  }
-  
-  /* Estilos para el título "Bienvenido" */
-  .login-container h2 {
-    font-size: 24px;
-    color: #555;
-    margin-bottom: 10
-  
 /* Estilos para el contenedor principal con imagen de fondo */
 .login-container {
     width: 300px;
@@ -29,22 +6,21 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-image: url('/home/lucas/Documentos/ProyectoCodePixel/Proyecto-Santex-37/front/src/assets/login.svg');
+    background-image: url('../assets/login.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #f9f9f9;
-  }
-  
-  /* Estilos para el párrafo "Hola!" */
-  .login-container p {
+}
+
+/* Estilos para el párrafo "Hola!" */
+.login-container p {
     font-size: 18px;
     color: #333;
-  }
-  
-  /* Estilos para el título "Bienvenido" */
-  .login-container h2 {
+}
+
+/* Estilos para el título "Bienvenido" */
+.login-container h2 {
     font-size: 24px;
     color: #555;
     margin-bottom: 10px;
-  }
-  
+}
