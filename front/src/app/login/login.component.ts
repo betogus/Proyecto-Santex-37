@@ -12,7 +12,6 @@ username: string = '';
 password: string = '';
 
   onSubmit() {
-    // Aquí puedes implementar la lógica de autenticación
     if (this.username === 'usuario' && this.password === 'contraseña') {
       console.log('Inicio de sesión exitoso');
     } else {
