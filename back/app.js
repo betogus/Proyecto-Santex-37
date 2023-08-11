@@ -1,4 +1,5 @@
 require('dotenv').config();
+const {initializeAuthentication} = require('./config/auth');
 
 // Express Dependencies:
 const express = require('express');
@@ -19,7 +20,7 @@ const routes = require('./routes');
 
 const config = require('./config/config');
 const validateEnv = require('./utils/validateEnv');
-
+initializeAuthentication();
 const app = express();
 validateEnv.validate();
 app.use(helmet());

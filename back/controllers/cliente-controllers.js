@@ -11,7 +11,7 @@ async function getAllClientes(req, res) {
 
 async function signUpCliente(req, res) {
   const {
-    dni, personahumana, nombre, email, celular, empresa,
+    dni, personahumana, nombre, email, celular, empresa, password
   } = req.body;
   try {
     const response = await clienteServices.singUp(
@@ -21,6 +21,7 @@ async function signUpCliente(req, res) {
       email,
       celular,
       empresa,
+      password
     );
     res.status(201).send(response);
   } catch (error) {
@@ -40,7 +41,7 @@ async function getByDniCliente(req, res) {
 
 async function editCliente(req, res) {
   const {
-    dni, personahumana, nombre, email, celular, empresa,
+    dni, personahumana, nombre, email, celular, empresa, password
   } = req.body;
   try {
     const response = await clienteServices.edit(
@@ -50,6 +51,7 @@ async function editCliente(req, res) {
       email,
       celular,
       empresa,
+      password
     );
     res.status(200).send(response);
   } catch (error) {
@@ -67,10 +69,21 @@ async function deleteCliente(req, res) {
   }
 }
 
+async function login (req, res, next) {
+  const {email, password} = req.body
+  try {
+    const response = await clienteServices.login(email, password)
+    res.status(200).send(response)
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = {
   getAllClientes,
   signUpCliente,
   getByDniCliente,
   editCliente,
   deleteCliente,
+  login
 };
