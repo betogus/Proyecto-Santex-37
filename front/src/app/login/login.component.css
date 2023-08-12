@@ -16,33 +16,31 @@
     width: 300px;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    background-color: rgba(40, 95, 55, 0.85);
     text-align: center;
 }
 
 /* Estilos para el título "Bienvenido" */
 .login-form h2 {
     font-size: 24px;
-    color: #555;
+    color: #fff;
     margin-bottom: 10px;
 }
 
 /* Estilos para los campos de entrada */
 .login-form input {
     width: 100%;
-    padding: 8px;
     margin-bottom: 10px;
+    padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 20px; /* Redondear los extremos */
-    box-sizing: border-box;
-}
-
+    border-radius: 5px;
+    box-sizing: border-box; 
 }
 
 /* Estilos para los botones */
 .login-form button {
-    margin-top: 5px;
+    margin-top: 10px;
     padding: 8px 16px;
     background-color: #007bff;
     color: white;
@@ -54,14 +52,4 @@
 
 .login-form button:hover {
     background-color: #0056b3;
-}
-
-/* Estilos para el botón de registro */
-.login-form .register-button {
-    background-color: #28a745;
-    transition: background-color 0.3s;
-}
-
-.login-form .register-button:hover {
-    background-color: #1f8743;
 }
