@@ -1,4 +1,5 @@
 require('dotenv').config();
+const mysql2 = require('mysql2')
 
 const logger = require('../utils/winston.logger');
 /**
@@ -16,6 +17,7 @@ const config = {
     port: process.env.DB_PORT,
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    dialectModule: mysql2,
     operatorsAliases: '0',
   },
   test: {
@@ -35,9 +37,11 @@ const config = {
     database: process.env.DB_DATABASE,
     port: process.env.DB_PORT,
     host: process.env.DB_HOST,
+    dialectModule: mysql2,
     dialect: 'mysql',
     operatorsAliases: '0',
   },
 };
+
 
 module.exports = config;

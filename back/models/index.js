@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-
+const mysql2 = require('mysql2')
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const connectionUri = process.env.DB_URL; // Obtén la Connection URI de las variables de entorno
@@ -9,6 +9,7 @@ const db = {};
 
 const sequelize = new Sequelize(connectionUri, {
   dialect: 'mysql',
+  dialectModule: mysql2,
   dialectOptions: {
     timezone: '-03:00',
     dateStrings: true,
