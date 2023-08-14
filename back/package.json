@@ -45,13 +45,7 @@
     "eslint-plugin-import": "^2.27.5",
     "nodemon": "^2.0.21"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": [
-        "lint-staged"
-      ]
-    }
-  },
+ 
   "lint-staged": {
     "*.js": [
       "./node_modules/.bin/eslint --fix",
