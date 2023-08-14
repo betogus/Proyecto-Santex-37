@@ -1,4 +1,4 @@
-/* const Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 const mysql2 = require('mysql2');
 const logger = require('../../utils/winston.logger');
 
@@ -7,7 +7,7 @@ const sequelizeOptions = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   dialectModule: mysql2,
-  dialect: 'mysql',
+  dialect: process.env.DB_DIALECT,
   operatorsAliases: '0',
   timezone: '-03:00',
   dialectOptions: {
@@ -30,17 +30,3 @@ const sequelize = new Sequelize(
   sequelizeOptions,
 );
 module.exports.connection = sequelize;
- */
-
-/* const {Sequelize} = require('sequelize')
-
-const sequelize = new Sequelize({
-  host: DB_HOST,
-  database: process.env.DB_DATABASE,
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-  dialect: process.env.DB_DIALECT
-})
-
-module.exports = {sequelize} */
