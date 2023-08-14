@@ -31,3 +31,16 @@ const sequelize = new Sequelize(
 );
 module.exports.connection = sequelize;
  */
+
+/* const {Sequelize} = require('sequelize')
+
+const sequelize = new Sequelize({
+  host: DB_HOST,
+  database: process.env.DB_DATABASE,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+  dialect: process.env.DB_DIALECT
+})
+
+module.exports = {sequelize} */

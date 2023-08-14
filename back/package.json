@@ -28,12 +28,11 @@
     "lint-staged": "^10.5.4",
     "moment": "^2.29.4",
     "morgan": "~1.10.0",
-    "mysql2": "^2.3.3",
+    "mysql2": "^3.6.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
-    "sequelize": "^6.29.0",
-    "sequelize-cli": "^6.6.0",
+    "sequelize": "^6.32.1",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1",
     "winston-transport": "^4.5.0",
@@ -45,7 +44,6 @@
     "eslint-plugin-import": "^2.27.5",
     "nodemon": "^2.0.21"
   },
- 
   "lint-staged": {
     "*.js": [
       "./node_modules/.bin/eslint --fix",
