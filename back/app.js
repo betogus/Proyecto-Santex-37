@@ -50,6 +50,38 @@ const app = express();
 validateEnv.validate();
 app.use(helmet());
 app.use(helmet.ieNoOpen());
+
+
+
+// Cors configuration
+const whitelist = process.env.CORS.split(' ');
+
+const corsOptions = {
+  origin(origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      logger.api.error('Not allowed by CORS', { origin });
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+app.use(cors(corsOptions));
+
+if (config.environment === 'production') {
+  app.set('trust proxy', 1); // trust first proxy
+}
+
+/* models.sequelize.authenticate()
+  .then(() => {
+    logger.api.debug('Conexión con la Base de Datos: EXITOSA');
+  })
+  .catch((err) => {
+    logger.api.error('Conexión con la Base de Datos: FALLIDA');
+    logger.api.error(err);
+  });
+ */
+
 // Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
 const sixtyDaysInSeconds = 5184000;
 app.use(helmet.hsts({
@@ -83,34 +115,7 @@ app.use(express.urlencoded(
   },
 ));
 
-// Cors configuration
-const whitelist = process.env.CORS.split(' ');
 
-const corsOptions = {
-  origin(origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      logger.api.error('Not allowed by CORS', { origin });
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
-app.use(cors(corsOptions));
-
-if (config.environment === 'production') {
-  app.set('trust proxy', 1); // trust first proxy
-}
-
-/* models.sequelize.authenticate()
-  .then(() => {
-    logger.api.debug('Conexión con la Base de Datos: EXITOSA');
-  })
-  .catch((err) => {
-    logger.api.error('Conexión con la Base de Datos: FALLIDA');
-    logger.api.error(err);
-  });
- */
   app.use('/documentation', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 app.use('/', routes);
