@@ -1,0 +1,22 @@
+{
+  "builds": [
+      {
+          "src": "./index.js",
+          "use": "@vercel/node"
+      }
+  ],
+  "routes": [
+      {
+          "src": "/(.*)",
+          "dest": "/index.js"
+      }
+  ],
+  "build": {
+      "env": {
+        "MYSQL2": "2.3.3"  
+      },
+      "commands": [
+        "npm install mysql2@${MYSQL2}"
+      ]
+    }
+}
