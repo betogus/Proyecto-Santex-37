@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+/* const Sequelize = require('sequelize');
 const mysql2 = require('mysql2');
 const logger = require('../../utils/winston.logger');
 
@@ -30,3 +30,4 @@ const sequelize = new Sequelize(
   sequelizeOptions,
 );
 module.exports.connection = sequelize;
+ */
