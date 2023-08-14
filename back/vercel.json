@@ -10,10 +10,5 @@
           "src": "/(.*)",
           "dest": "/index.js"
       }
-  ],
-  "build": {
-      "env": {
-        "API_BASE_URL": "https://code-pixel-back-equipo37.vercel.app/"
-      }
-    }
+  ]
 }
