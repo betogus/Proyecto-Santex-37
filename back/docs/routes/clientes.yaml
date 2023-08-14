@@ -1,0 +1,55 @@
+tags:
+  - name: Clientes
+    description: API para manejar solicitudes de clientes
+
+paths:
+  /clientes:
+    get:
+      summary: Consultar lista de clientes
+      tags:
+        - Clientes
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Lista de clientes encontrada
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Cliente"
+
+components:
+  schemas:
+    Cliente:
+      type: object
+      properties:
+        cli_dni:
+          type: string
+          example: "12345678"
+        cli_personahumana:
+          type: boolean
+          example: true
+        cli_nombre:
+          type: string
+          example: "Juan Pérez"
+        cli_email:
+          type: string
+          format: email
+          example: "juan@example.com"
+        cli_celular:
+          type: string
+          example: "123456789"
+        cli_empresa:
+          type: string
+          example: "Empresa XYZ"
+        cli_password:
+          type: string
+          example: "secretpassword"
+
+securitySchemes:
+  BearerAuth:
+    type: http
+    scheme: bearer
+    bearerFormat: JWT

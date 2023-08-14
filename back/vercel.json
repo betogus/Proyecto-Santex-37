@@ -13,10 +13,7 @@
   ],
   "build": {
       "env": {
-        "MYSQL2": "2.3.3"  
-      },
-      "commands": [
-        "npm install mysql2@${MYSQL2}"
-      ]
+        "API_BASE_URL": "https://code-pixel-back-equipo37.vercel.app/"
+      }
     }
 }

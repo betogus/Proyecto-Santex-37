@@ -12,6 +12,31 @@ const session = require('express-session');
 const cors = require('cors');
 const logger = require('./utils/winston.logger');
 
+
+// Swagger Dependencies
+const swaggerUI = require('swagger-ui-express')
+const swaggerJSDoc = require('swagger-jsdoc')
+const apiBaseUrl = process.env.API_BASE_URL || 'http://localhost:4001';
+
+const swaggerSpec = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'My API Documentation',
+      version: '1.0.0'
+    },
+    servers: [
+      {url: apiBaseUrl}
+    ]
+  },
+  apis: ['./docs/**/*.yaml'],
+}
+const swaggerOptions = {
+  swaggerDefinition: swaggerSpec.definition,
+  apis: ['./docs/**/*.yaml'],
+};
+
+const swaggerDocs = swaggerJSDoc(swaggerOptions);
 // Models:
 // const models = require('./models');
 
@@ -86,5 +111,7 @@ if (config.environment === 'production') {
     logger.api.error(err);
   });
  */
+  app.use('/documentation', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
 app.use('/', routes);
 module.exports = app;
