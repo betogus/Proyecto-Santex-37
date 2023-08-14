@@ -13,16 +13,16 @@ const cors = require('cors');
 const logger = require('./utils/winston.logger');
 
 // Models:
-// const models = require('./models');
+const models = require('./models');
 
 // Rutes:
 const routes = require('./routes');
 
 const config = require('./config/config');
-const validateEnv = require('./utils/validateEnv');
+//const validateEnv = require('./utils/validateEnv');
 initializeAuthentication();
 const app = express();
-validateEnv.validate();
+//validateEnv.validate();
 app.use(helmet());
 app.use(helmet.ieNoOpen());
 // Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
@@ -77,7 +77,7 @@ if (config.environment === 'production') {
   app.set('trust proxy', 1); // trust first proxy
 }
 
-/* models.sequelize.authenticate()
+models.sequelize.authenticate()
   .then(() => {
     logger.api.debug('Conexión con la Base de Datos: EXITOSA');
   })
@@ -85,6 +85,6 @@ if (config.environment === 'production') {
     logger.api.error('Conexión con la Base de Datos: FALLIDA');
     logger.api.error(err);
   });
- */
+ 
 app.use('/', routes);
 module.exports = app;
