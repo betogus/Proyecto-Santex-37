@@ -41,9 +41,3 @@ const config = {
 };
 
 module.exports = config;
-console.log('DB_DATABASE:', process.env.DB_DATABASE);
-console.log('DB_USERNAME:', process.env.DB_USERNAME);
-console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
-console.log('PORT:', process.env.DB_PORT);
-console.log('HOST:', process.env.DB_HOST);
-console.log('DIALECT:', process.env.DB_DIALECT);
